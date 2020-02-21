@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<style>
+table, tr, td {
+  border: 1px solid black;
+}
+td:first-child{font-weight:bold}
+</style>
+
+<body>
+<br/>
+<form action="/add-profile" method="post" th:object="${formProfileData}">
+    <table>
+        <tr>
+            <td>Profile name</td>
+            <td>
+                <input name="name" type="text" th:field="*{name}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}">Invalid value</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile area [cm2]</td>
+            <td>
+                <input name="area" type="text" th:field="*{area}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('area')}"
+                      th:errors="*{area}">Invalid value</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Profile section modulus [cm3]</td>
+            <td>
+                <input name="sectionModulus" type="text" th:field="*{sectionModulus}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('sectionModulus')}"
+                      th:errors="*{sectionModulus}">Invalid value</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="send" />
+            </td>
+        </tr>
+    </table>
+</form>

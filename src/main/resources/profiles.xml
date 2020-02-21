@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<profiles>
+    <profile>
+        <name>IPE100</name>
+        <area>10.3</area>
+        <sectionModulus>34.2</sectionModulus>
+    </profile>
+    <profile>
+        <name>IPE120</name>
+        <area>13.2</area>
+        <sectionModulus>53</sectionModulus>
+    </profile>
+    <profile>
+        <name>IPE140</name>
+        <area>16.4</area>
+        <sectionModulus>77.3</sectionModulus>
+    </profile>
+    <profile>
+        <name>IPE160</name>
+        <area>20.1</area>
+        <sectionModulus>109.0</sectionModulus>
+    </profile>
+</profiles>

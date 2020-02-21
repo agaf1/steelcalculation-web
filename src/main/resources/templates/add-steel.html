@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<style>
+table, tr, td {
+  border: 1px solid black;
+}
+td:first-child{font-weight:bold}
+</style>
+
+<body>
+<br/>
+<form action="/add-steel" method="post" th:object="${formSteelData}">
+    <table>
+        <tr>
+            <td>Steel name</td>
+            <td>
+                <input name="name" type="text" th:field="*{name}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}">Invalid value</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Steel Strength [MPa]</td>
+            <td>
+                <input name="bendingStrength" type="text" th:field="*{bendingStrength}" />
+                <span class="validatorError"
+                      th:if="${#fields.hasErrors('bendingStrength')}"
+                      th:errors="*{bendingStrength}">Invalid value</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="send"/>
+            </td>
+        </tr>
+    </table>
+</form>

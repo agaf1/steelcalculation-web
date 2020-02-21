@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+
+<steels>
+    <steel>
+        <name>S235</name>
+        <bendingStrength>235</bendingStrength>
+    </steel>
+    <steel>
+        <name>S350</name>
+        <bendingStrength>350</bendingStrength>
+    </steel>
+</steels>

@@ -1,0 +1,114 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<style>
+table, tr, td {
+  border: 1px solid black;
+}
+td:first-child{font-weight:bold}
+.validationError{
+    color:red;
+}
+ .result-label{
+    font-weight:bold;
+    }
+</style>
+
+<body>
+<br/>
+<br/>
+<br/>
+<form action="/" method="post" th:object="${formData}">
+    <table>
+        <tr>
+            <td >Profile</td>
+            <td>
+                <select name="profile">
+                    <option
+                            th:each="profile : ${profiles}"
+                            th:text="${profile.name}"
+                            th:value="${profile.name}"
+                    >
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input type="button" value="add new profile" onclick="window.location='./add-profile' "/>
+            </td>
+        </tr>
+
+        <tr>
+            <td > Steel</td>
+            <td>
+                <select name="steel" >
+                    <option
+                            th:each="steel : ${steels}"
+                            th:text="${steel.name}"
+                            th:value="${steel.name}"
+                    >
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input type="button" value="add new steel" onclick="window.location='./add-steel' "/>
+            </td>
+        </tr>
+        <tr>
+            <td> Bending Moment [kNm]</td>
+            <td>
+                <input name="bendingMoment" type="text" th:field="*{bendingMoment}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('bendingMoment')}"
+                      th:errors="*{bendingMoment}">Valid value</span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                Tension Force [kN]
+            </td>
+            <td><input name="tensionForce" type="text"  th:field="*{tensionForce}" />
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('tensionForce')}"
+                      th:errors="*{tensionForce}">Valid value</span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <input type="radio" id="calculate" name="operation" value="calculate" />
+                <label for="calculate">calculate</label>
+                <input type="radio" id="select-profile" name="operation" value="select-profile" />
+                <label for="select-profile">select profile</label>
+                <span class="validationError"
+                      th:if="${#fields.hasErrors('operation')}"
+                      th:errors="*{operation}">Valid value</span>
+            </td>
+            <td>
+                <input type="submit" value="send" />
+            </td>
+        </tr>
+    </table>
+</form>
+<div>
+    <span class="result-label">RESULT:</span>
+    <div> Steel:
+        <span th:text="${wynik.steelName}"></span>
+           , Profile:
+        <span th:text="${wynik.profileName}"></span>
+    </div>
+    <div> Capacity =
+    <span th:text="${wynik.capacity}"></span>
+    </div>
+    <div> Stress =
+        <span th:text="${wynik.stress}"></span>
+        [MPa].
+    </div>
+    <div>
+        <span th:text="${wynik.message}" style="color:red"></span>
+    </div>
+</div>
+</body>
+</html>
